@@ -2,7 +2,7 @@ describe('Airport', function(){
 
   var heathrow;
   var jet = jasmine.createSpy('jet');
-  var w = { stormy: function(){} }
+  var weather = { stormy: function(){} }
 
   beforeEach(function(){
     heathrow = new Airport();
@@ -24,8 +24,8 @@ describe('Airport', function(){
   describe('knows its plane array', function() {
     it('releases a plane', function() {
       heathrow.land(jet);
-      spyOn(w, 'stormy').and.returnValue(false);
-      heathrow.takeOff(w, jet);
+      spyOn(weather, 'stormy').and.returnValue(false);
+      heathrow.takeOff(weather, jet);
       expect(heathrow.planesArray()).toEqual(0);
     });
   });
