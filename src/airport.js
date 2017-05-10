@@ -23,10 +23,6 @@ Airport.prototype.takeOff = function(jet){
   }
 }
 
-Airport.prototype.planesArray = function(){
-  return this._planes.length;
-}
-
 Airport.prototype.how_many_planes = function(){
   return this._planes.length;
 }

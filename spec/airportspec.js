@@ -8,25 +8,26 @@ describe('Airport', function(){
     spyOn(heathrow, 'stormy').and.returnValue(false)
     });
 
-  describe('knows its plane array', function() {
+  describe('knows its plane hangar array', function() {
     it('is empty', function() {
-      expect(heathrow.planesArray()).toEqual(0);
+      expect(heathrow._planes.constructor.name).toEqual('Array');
+      expect(heathrow.how_many_planes()).toEqual(0);
     });
   });
 
   describe('knows its plane array', function() {
-    it('has a plane', function() {
+    it('receives a plane on #land', function() {
       heathrow.land(jet);
-      expect(heathrow.planesArray()).toEqual(1);
+      expect(heathrow.how_many_planes()).toEqual(1);
     });
   });
 
   describe('knows its plane array', function() {
-    it('releases a plane', function() {
+    it('releases a plane on #takeOff', function() {
       heathrow.land(jet);
-      expect(heathrow.planesArray()).toEqual(1);
+      expect(heathrow.how_many_planes()).toEqual(1);
       heathrow.takeOff(jet);
-      expect(heathrow.planesArray()).toEqual(0);
+      expect(heathrow.how_many_planes()).toEqual(0);
     });
   });
 })
