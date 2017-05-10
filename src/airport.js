@@ -3,14 +3,21 @@ function Airport () {
   this._max_planes = 25;
 };
 
-Airport.prototype.land = function(plane){
-  this._planes.push(plane);
-  plane._status = 'On ground';
+Airport.prototype.stormy = function(){
+  var weather = new Weather();
+  return weather.stormy();
 }
 
-Airport.prototype.takeOff = function(w, jet){
-  // var w = new Weather();
-  if ( w.stormy() === false ){
+Airport.prototype.land = function(jet){
+  if ( this.stormy() === false ){
+  jet.takeOff;
+  this._planes.push(jet);
+}
+  jet._status = 'On ground';
+}
+
+Airport.prototype.takeOff = function(jet){
+  if ( this.stormy() === false ){
     jet.takeOff;
     this._planes.pop(jet);
   }
