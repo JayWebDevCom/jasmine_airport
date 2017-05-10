@@ -5,7 +5,6 @@ describe('Airport', function(){
 
   beforeEach(function(){
     heathrow = new Airport();
-
     });
 
   describe('knows its plane hangar array', function() {
@@ -22,14 +21,16 @@ describe('Airport', function(){
 
   describe('knows its plane array', function() {
 
-    it('receives a plane on #land', function() {
+    beforeEach(function(){
       spyOn(heathrow, 'stormy').and.returnValue(false)
+      });
+
+    it('receives a plane on #land', function() {
       heathrow.land(jet);
       expect(heathrow.how_many_planes()).toEqual(1);
     });
 
     it('releases a plane on #takeOff', function() {
-      spyOn(heathrow, 'stormy').and.returnValue(false)
       heathrow.land(jet);
       expect(heathrow.how_many_planes()).toEqual(1);
       heathrow.takeOff(jet);
@@ -40,14 +41,16 @@ describe('Airport', function(){
 
   describe('in stormy weather', function() {
 
-    it('cannot land a plane', function() {
+    beforeEach(function(){
       spyOn(heathrow, 'stormy').and.returnValue(true)
+      });
+
+    it('cannot land a plane', function() {
       expect(function(){heathrow.land(jet)}).toThrow(TypeError('Stormy Weather!'));
       expect(heathrow.how_many_planes()).toEqual(0);
     });
 
     it('cannot takeOff planes', function() {
-      spyOn(heathrow, 'stormy').and.returnValue(true)
       expect(function(){heathrow.takeOff(jet)}).toThrow(TypeError('Stormy Weather!'));
       expect(heathrow.how_many_planes()).toEqual(0);
     });
