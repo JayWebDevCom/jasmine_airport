@@ -24,6 +24,7 @@ describe('Airport', function(){
   describe('knows its plane array', function() {
     it('releases a plane', function() {
       heathrow.land(jet);
+      expect(heathrow.planesArray()).toEqual(1);
       heathrow.takeOff(jet);
       expect(heathrow.planesArray()).toEqual(0);
     });
