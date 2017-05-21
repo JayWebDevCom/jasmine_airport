@@ -1,5 +1,7 @@
 describe('Airport', function(){
 
+  var Airport = require('../src/Airport');
+
   var heathrow;
   var jet = {};
 
@@ -22,7 +24,8 @@ describe('Airport', function(){
   describe('knows its plane array', function() {
 
     beforeEach(function(){
-      spyOn(heathrow, 'stormy').and.returnValue(false)
+      heathrow.stormy = function(){ return false}
+      // spyOn(heathrow, 'stormy').and.returnValue(false)
       });
 
     it('receives a plane on #land', function() {
@@ -42,11 +45,14 @@ describe('Airport', function(){
   describe('in stormy weather', function() {
 
     beforeEach(function(){
-      spyOn(heathrow, 'stormy').and.returnValue(true)
+      heathrow.stormy = function(){ return true}
+      // spyOn(heathrow, 'stormy').and.returnValue(true)
       });
 
     it('cannot land a plane', function() {
-      expect(function(){heathrow.land(jet)}).toThrow(TypeError('Stormy Weather!'));
+      expect(function(){
+        heathrow.land(jet)
+      }).toThrow(TypeError('Stormy Weather!'));
       expect(heathrow.how_many_planes()).toEqual(0);
     });
 

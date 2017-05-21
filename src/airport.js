@@ -32,3 +32,5 @@ Airport.prototype.takeOff = function(jet){
 Airport.prototype.how_many_planes = function(){
   return this._planes.length;
 }
+
+module.exports = Airport;
