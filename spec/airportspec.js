@@ -1,7 +1,5 @@
 describe('Airport', function(){
 
-  var Airport = require('../src/Airport');
-
   var heathrow;
   var jet = {};
 
@@ -24,7 +22,9 @@ describe('Airport', function(){
   describe('knows its plane array', function() {
 
     beforeEach(function(){
-      heathrow.stormy = function(){ return false}
+      heathrow.stormy = function() {
+        return false
+      }
       // spyOn(heathrow, 'stormy').and.returnValue(false)
       });
 
@@ -64,6 +64,3 @@ describe('Airport', function(){
   });
 
 });
-
-
-// spyOn(Math, 'random').and.returnValues(0.1, 0.2, 0.3, 0.4);
